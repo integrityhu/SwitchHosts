@@ -1,0 +1,68 @@
+﻿http://stackoverflow.com/questions/1652301/how-to-sign-installation-files-of-a-visual-studio-msi
+http://stackoverflow.com/questions/4102503/visual-studio-setup-project-conditional-if-file-exists
+https://msdn.microsoft.com/en-us/library/aa368012.aspx
+
+WScript
+https://msdn.microsoft.com/en-us/library/ec0wcxh3(v=vs.84).aspx
+
+Kedves Zoli!
+
+A feladat egyszerű, de van néhány nem egyszerű részlet benne:
+Hosts file kezelő szoftver
+Egyelőre csak Windowsra írandó meg.
+
+Windows verzió:
+
+1.           verzió:
+Egy hosts.conf file-ban sorokat lehet felvenni.
+A program futtatásakor megnézi, hogy ezek a sorok megvannak-e a hosts file-ban is,
+•             ha nincsenek, akkor hozzáfűzi ezeket a sorokat a hosta file-ba,
+•             ha megvannak, akkor pedig törli ezeket a sorokat.
+Tehát a program arra szolgál, hogy bizonyos rekordokat be- és kikapcsoljon a hosta file-ban.
+Pl.:
+Ez van a hosts.config file-ban:
+
+102.54.94.97      rhino.acme.com              # source server
+38.25.63.10        x.acme.com                      # x client host
+
+Akkor ha ezek nincsenek a hosts file-ban, akkor beszúrja őket, ha benne vannak már, akkor pedig kiveszi őket.
+Az 1. verzióban a program egy egyszerű parancssoros program, melyet a felhasználó, akár desktop ikonként vagy taskbarról is indíthat, de persze parancssorból is.
+
+Nem adminisztrátor felhasználónak, nem adminisztrátori joggal is tudni kell használnia a programot! (Ezért kell majd telepítő, hiszen ilyen program telepítéséhez adminisztrátori jog kell!)
+
+2.           verzió
+Feature bővítés:
+A Windows backgroundra a program kiírja, hogy mi aktív a hosts file-ban, illetve kiírja a DNS szervereket.
+A hosts.config-ból származó rekordokat sorolja fel először a program, utána a többi aktív hosts file rekordot.
+Ha semmit sem vesz a Windows a hosts file-ból, akkor csak a DNS szervereket írja ki.
+Van egy kis csavar a feladatban, amire figyelni kell:
+A host file-ban akár rengeteg aktív rekord is lehet! Nyilván, ha sok száz vagy ezer rekord lenne benne, akkor nincs értelme kiírni őket a backgroundra. Ha sok van, akkor írja ki a hosts.config-ból származókat, a többnél csak azt írja ki, hogy hány darab további aktív rekord van a host file-ban. Ritka, hogy sok van, pl. néhány régi hirdetés blokkoló program használta a hosts file, de most is lehetnek ilyen alkalmazások.
+A backgroudra a Sysinternals bginfo-hoz hasonlóan írja ki az információkat. A bginfo nem szabad forráskódú program, de van egy hasonló szabad forráskódú (nem próbáltam):
+
+https://sourceforge.net/projects/bginfo4x/
+
+3.)
+A programhoz írjunk telepítőt (valójában ez már az 1-es ponthoz is kell), frissítőt, verziókezelőt (Visual Studio támogatja ezt), valamint a telepítő kérdezze meg, hogy hová települjön a program, ajánlja fel, hogy létrehozzon desktop ikont, taskbar ikont, továbbá:
+minden módosítást naplózzon a Windows Events Application logba (hogy Event Viewerrel lehessen nézni),
+továbbá:
+A program hibakezelésekre felkészítendő, így pl. adjon hibát, ha nincs host file stb., illetve.
+legyen szintaxis ellenőrzés, mielőtt a hosts.conf file-t alkalmazza, mind a hosts.conf file tartalámt, mint a hosts file tartalmát ellenőrizze.
+
+4.)
+A program nemigen készíthető fel Terminal Server, illetve multiuser Windows támogatásra is, mert a host file hatása globális, minden felhasználóra érvényesül. Így nem kell, hogy Terminal Serveren is jól működjün a program (hacsak nem az adminisztrátor használja).
+
+5.)
+Esetleg a desktop ikont is módosíthatja a program, hogy azon ON vagy OFF jelenjen meg.
+
+Megjegyzés:
+Windowsban a host file helye:
+%SystemRoot%\System32\drivers\etc\hosts
+Fontos, hogy első körben csak az 1-es ponttal foglalkozz, az első verzió pontosan azt csinálja, amit a specifikáció megad hozzá.
+
+További verziók:
+A naplózás nem fontos, de azért csinálnám meg, mert ha korrekt Windows programot írunk, azt így illik csinálni, ismerjük a naplózást. Telepítő, frissítő szintén inkább csak ezért.
+Ezt a programot ingyenes programként majd közzé akarom tenni, ezért is legyen szép. Ez egy ingyenes termékünk lesz.
+Nincs hasonló, legalábbis én nem találtam a neten.
+Érdekes lenne ez Androidra is, ott nem tudom milyen nyelven lenne érdemes megcsinálni, de akár Linuxra is.
+
+Ez nyilván egy Windows programozónak ujjgyakorlat, neked nem hiszem, mert feltehetően utána kell nézni pár dolognak, pl. hogy lehet futtatni a programot nem adminisztrátori joggal (megoldható persze, régen tudtam is hogy kellene, erre megfelelő standard módszer van Windowsban). 

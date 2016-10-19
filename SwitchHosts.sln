@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchHosts", "SwitchHosts\SwitchHosts.csproj", "{FEE78A04-0B75-46DA-A3A4-2D657A79F197}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchHostsForm", "SwitchHostsForm\SwitchHostsForm.csproj", "{D083E11D-27C1-4454-9AB1-4FA10FF1AE4F}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SwitchHostsInstaller", "SwitchHostsInstaller\SwitchHostsInstaller.vdproj", "{3D90D870-524E-4514-BB65-D9379E740698}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEE78A04-0B75-46DA-A3A4-2D657A79F197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEE78A04-0B75-46DA-A3A4-2D657A79F197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEE78A04-0B75-46DA-A3A4-2D657A79F197}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FEE78A04-0B75-46DA-A3A4-2D657A79F197}.Debug|x86.Build.0 = Debug|Any CPU
+		{FEE78A04-0B75-46DA-A3A4-2D657A79F197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEE78A04-0B75-46DA-A3A4-2D657A79F197}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEE78A04-0B75-46DA-A3A4-2D657A79F197}.Release|x86.ActiveCfg = Release|x86
+		{FEE78A04-0B75-46DA-A3A4-2D657A79F197}.Release|x86.Build.0 = Release|x86
+		{D083E11D-27C1-4454-9AB1-4FA10FF1AE4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D083E11D-27C1-4454-9AB1-4FA10FF1AE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D083E11D-27C1-4454-9AB1-4FA10FF1AE4F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D083E11D-27C1-4454-9AB1-4FA10FF1AE4F}.Debug|x86.Build.0 = Debug|Any CPU
+		{D083E11D-27C1-4454-9AB1-4FA10FF1AE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D083E11D-27C1-4454-9AB1-4FA10FF1AE4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D083E11D-27C1-4454-9AB1-4FA10FF1AE4F}.Release|x86.ActiveCfg = Release|x86
+		{D083E11D-27C1-4454-9AB1-4FA10FF1AE4F}.Release|x86.Build.0 = Release|x86
+		{3D90D870-524E-4514-BB65-D9379E740698}.Debug|Any CPU.ActiveCfg = Debug
+		{3D90D870-524E-4514-BB65-D9379E740698}.Debug|Any CPU.Build.0 = Debug
+		{3D90D870-524E-4514-BB65-D9379E740698}.Debug|x86.ActiveCfg = Debug
+		{3D90D870-524E-4514-BB65-D9379E740698}.Debug|x86.Build.0 = Debug
+		{3D90D870-524E-4514-BB65-D9379E740698}.Release|Any CPU.ActiveCfg = Release
+		{3D90D870-524E-4514-BB65-D9379E740698}.Release|Any CPU.Build.0 = Release
+		{3D90D870-524E-4514-BB65-D9379E740698}.Release|x86.ActiveCfg = Release
+		{3D90D870-524E-4514-BB65-D9379E740698}.Release|x86.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
